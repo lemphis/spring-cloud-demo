@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./api-gateway
+    ports:
+      - "80:80"
+  eureka-server:
+    container_name: eureka-server
+    build:
+      context: ./eureka-server
+    ports:
+      - "8761:8761"
+  eureka-client-1:
+    container_name: eureka-client
+    build:
+      context: ./eureka-client
+    ports:
+      - "8080:8080"
