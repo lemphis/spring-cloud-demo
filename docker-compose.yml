@@ -7,15 +7,20 @@ services:
       context: ./api-gateway
     ports:
       - "80:80"
+    depends_on:
+      - eureka-server
   eureka-server:
     container_name: eureka-server
     build:
       context: ./eureka-server
     ports:
       - "8761:8761"
-  eureka-client-1:
+  eureka-client:
     container_name: eureka-client
     build:
       context: ./eureka-client
     ports:
       - "8080:8080"
+    depends_on:
+      - api-gateway
+      - eureka-server

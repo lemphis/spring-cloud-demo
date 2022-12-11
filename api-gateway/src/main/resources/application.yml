@@ -6,7 +6,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defalutZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
+  instance:
+    hostname: api-gateway
 
 spring:
   application:
@@ -17,4 +19,4 @@ spring:
         - id: eureka-client
           uri: lb://EUREKA-CLIENT
           predicates:
-            - Path=http://localhost:8080/**
+            - Path=http://eureka-client:8080/**
